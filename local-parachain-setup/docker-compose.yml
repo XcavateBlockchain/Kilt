@@ -1,0 +1,207 @@
+version: "3"
+
+services:
+  relay-node-alice:
+    image: ${RELAY_IMG}
+    command:
+      [
+        "--port=${PORT_RELAY_ALICE_LIBP2P}",
+        "--no-mdns",
+        "--chain=${RELAY_CHAIN_SPEC}",
+        "--ws-port=${PORT_RELAY_ALICE_WS}",
+        "--ws-external",
+        "--rpc-external",
+        "--unsafe-rpc-external",
+        "--rpc-methods=unsafe",
+        "--rpc-cors=all",
+        "--validator",
+        "--alice",
+        "--node-key-file=/data/spec/relay/alice.key",
+        "--bootnodes",
+        "/dns4/relay-node-alice/tcp/${PORT_RELAY_ALICE_LIBP2P}/p2p/12D3KooWPU8zhfbYjr6mGuDdrrkQMFfDm2edXFYkkkmyCBont8K5",
+        "--bootnodes",
+        "/dns4/relay-node-bob/tcp/${PORT_RELAY_BOB_LIBP2P}/p2p/12D3KooWGFFpuUgFSFwNVLeVhNJ6m25jgv15pK8xcbdqaAj9gfnc",
+        "--bootnodes",
+        "/dns4/relay-node-charlie/tcp/${PORT_RELAY_CHARLIE_LIBP2P}/p2p/12D3KooWPaFM8dPrm5GodDmggNPNLrKLUzDnLYuEStVZ7sesjrrW"
+      ]
+    volumes:
+      - ./specs:/data/spec/
+      - /data
+    ports:
+      - ${PORT_RELAY_ALICE_WS}:${PORT_RELAY_ALICE_WS}
+      # - ${PORT_RELAY_ALICE_LIBP2P}:${PORT_RELAY_ALICE_LIBP2P}
+    expose:
+      - ${PORT_RELAY_ALICE_LIBP2P}
+
+  relay-node-bob:
+    image: ${RELAY_IMG}
+    command:
+      [
+        "--port=${PORT_RELAY_BOB_LIBP2P}",
+        "--no-mdns",
+        "--chain=${RELAY_CHAIN_SPEC}",
+        "--ws-port=${PORT_RELAY_BOB_WS}",
+        "--ws-external",
+        "--rpc-external",
+        "--rpc-cors=all",
+        "--unsafe-rpc-external",
+        "--rpc-methods=unsafe",
+        "--validator",
+        "--bob",
+        "--node-key-file=/data/spec/relay/bob.key",
+        "--bootnodes",
+        "/dns4/relay-node-alice/tcp/${PORT_RELAY_ALICE_LIBP2P}/p2p/12D3KooWPU8zhfbYjr6mGuDdrrkQMFfDm2edXFYkkkmyCBont8K5",
+        "--bootnodes",
+        "/dns4/relay-node-bob/tcp/${PORT_RELAY_BOB_LIBP2P}/p2p/12D3KooWGFFpuUgFSFwNVLeVhNJ6m25jgv15pK8xcbdqaAj9gfnc",
+        "--bootnodes",
+        "/dns4/relay-node-charlie/tcp/${PORT_RELAY_CHARLIE_LIBP2P}/p2p/12D3KooWPaFM8dPrm5GodDmggNPNLrKLUzDnLYuEStVZ7sesjrrW"
+      ]
+    volumes:
+      - ./specs:/data/spec/
+      - /data
+    ports:
+      - ${PORT_RELAY_BOB_WS}:${PORT_RELAY_BOB_WS}
+      # - ${PORT_RELAY_BOB_LIBP2P}:${PORT_RELAY_BOB_LIBP2P}
+    expose:
+      - ${PORT_RELAY_BOB_LIBP2P}
+
+  relay-node-charlie:
+    image: ${RELAY_IMG}
+    command:
+      [
+        "--port=${PORT_RELAY_CHARLIE_LIBP2P}",
+        "--no-mdns",
+        "--chain=${RELAY_CHAIN_SPEC}",
+        "--ws-port=${PORT_RELAY_CHARLIE_WS}",
+        "--ws-external",
+        "--rpc-external",
+        "--rpc-cors=all",
+        "--unsafe-rpc-external",
+        "--rpc-methods=unsafe",
+        "--validator",
+        "--charlie",
+        "--node-key-file=/data/spec/relay/charlie.key",
+        "--bootnodes",
+        "/dns4/relay-node-alice/tcp/${PORT_RELAY_ALICE_LIBP2P}/p2p/12D3KooWPU8zhfbYjr6mGuDdrrkQMFfDm2edXFYkkkmyCBont8K5",
+        "--bootnodes",
+        "/dns4/relay-node-bob/tcp/${PORT_RELAY_BOB_LIBP2P}/p2p/12D3KooWGFFpuUgFSFwNVLeVhNJ6m25jgv15pK8xcbdqaAj9gfnc",
+        "--bootnodes",
+        "/dns4/relay-node-charlie/tcp/${PORT_RELAY_CHARLIE_LIBP2P}/p2p/12D3KooWPaFM8dPrm5GodDmggNPNLrKLUzDnLYuEStVZ7sesjrrW"
+      ]
+    volumes:
+      - ./specs:/data/spec/
+      - /data
+    ports:
+      - ${PORT_RELAY_CHARLIE_WS}:${PORT_RELAY_CHARLIE_WS}
+      # - ${PORT_RELAY_CHARLIE_LIBP2P}:${PORT_RELAY_CHARLIE_LIBP2P}
+    expose:
+      - ${PORT_RELAY_CHARLIE_LIBP2P}
+
+  kilt-collator-alice:
+    image: ${KILT_IMG}
+    volumes:
+      - ./specs:/data/spec/
+      - /data
+    command:
+      [
+        "--no-mdns",
+        "--port=${PORT_PARA_ALICE_LIBP2P}",
+        "--ws-port=${PORT_PARA_ALICE_WS}",
+        "--ws-external",
+        "--rpc-external",
+        "--rpc-cors=all",
+        "--unsafe-rpc-external",
+        "--rpc-methods=unsafe",
+        "--chain=${KILT_RAW_SPEC_FILE}",
+        "--runtime=${KILT_RUNTIME}",
+        "--collator",
+        "--alice",
+        "--node-key-file=/data/spec/para-kilt/alice.key",
+        "--bootnodes",
+        "/dns4/kilt-collator-alice/tcp/${PORT_PARA_ALICE_LIBP2P}/p2p/12D3KooWPn1AKtsLYy6EYtXBgb6fQNw4MkLeBsyvPRV5DxAhvQ8M",
+        "--bootnodes",
+        "/dns4/kilt-collator-bob/tcp/${PORT_PARA_BOB_LIBP2P}/p2p/12D3KooWMW6NQPgzHkroN6mtnGjfETVPw2G1NqkV5YW7VfzLxHCX",
+        "--execution=wasm",
+        "--",
+        "--port=${PORT_RELAY_ALICE_LIBP2P}",
+        "--chain=${RELAY_CHAIN_SPEC}",
+        "--execution=wasm",
+        "--bootnodes",
+        "/dns4/relay-node-alice/tcp/${PORT_RELAY_ALICE_LIBP2P}/p2p/12D3KooWPU8zhfbYjr6mGuDdrrkQMFfDm2edXFYkkkmyCBont8K5",
+        "--bootnodes",
+        "/dns4/relay-node-bob/tcp/${PORT_RELAY_BOB_LIBP2P}/p2p/12D3KooWGFFpuUgFSFwNVLeVhNJ6m25jgv15pK8xcbdqaAj9gfnc",
+        "--bootnodes",
+        "/dns4/relay-node-charlie/tcp/${PORT_RELAY_CHARLIE_LIBP2P}/p2p/12D3KooWPaFM8dPrm5GodDmggNPNLrKLUzDnLYuEStVZ7sesjrrW"
+      ]
+    ports:
+      - ${PORT_PARA_ALICE_WS}:${PORT_PARA_ALICE_WS}
+      # - ${PORT_PARA_ALICE_LIBP2P}:${PORT_PARA_ALICE_LIBP2P}
+    expose:
+      - ${PORT_PARA_ALICE_LIBP2P}
+      - ${PORT_RELAY_ALICE_LIBP2P}
+    depends_on:
+      - relay-node-alice
+      - relay-node-bob
+      - relay-node-charlie
+
+  kilt-collator-bob:
+    image: ${KILT_IMG}
+    volumes:
+      - ./specs:/data/spec/
+      - /data
+    command:
+      [
+        "--no-mdns",
+        "--port=${PORT_PARA_BOB_LIBP2P}",
+        "--ws-port=${PORT_PARA_BOB_WS}",
+        "--ws-external",
+        "--rpc-external",
+        "--rpc-cors=all",
+        "--unsafe-rpc-external",
+        "--rpc-methods=unsafe",
+        "--chain=${KILT_RAW_SPEC_FILE}",
+        "--runtime=${KILT_RUNTIME}",
+        "--collator",
+        "--bob",
+        "--node-key-file=/data/spec/para-kilt/bob.key",
+        "--bootnodes",
+        "/dns4/kilt-collator-alice/tcp/${PORT_PARA_ALICE_LIBP2P}/p2p/12D3KooWPn1AKtsLYy6EYtXBgb6fQNw4MkLeBsyvPRV5DxAhvQ8M",
+        "--bootnodes",
+        "/dns4/kilt-collator-bob/tcp/${PORT_PARA_BOB_LIBP2P}/p2p/12D3KooWMW6NQPgzHkroN6mtnGjfETVPw2G1NqkV5YW7VfzLxHCX",
+        "--execution=wasm",
+        "--",
+        "--port=${PORT_RELAY_ALICE_LIBP2P}",
+        "--chain=${RELAY_CHAIN_SPEC}",
+        "--execution=wasm",
+        "--bootnodes",
+        "/dns4/relay-node-alice/tcp/${PORT_RELAY_ALICE_LIBP2P}/p2p/12D3KooWPU8zhfbYjr6mGuDdrrkQMFfDm2edXFYkkkmyCBont8K5",
+        "--bootnodes",
+        "/dns4/relay-node-bob/tcp/${PORT_RELAY_BOB_LIBP2P}/p2p/12D3KooWGFFpuUgFSFwNVLeVhNJ6m25jgv15pK8xcbdqaAj9gfnc",
+        "--bootnodes",
+        "/dns4/relay-node-charlie/tcp/${PORT_RELAY_CHARLIE_LIBP2P}/p2p/12D3KooWPaFM8dPrm5GodDmggNPNLrKLUzDnLYuEStVZ7sesjrrW"
+      ]
+    ports:
+      - ${PORT_PARA_BOB_WS}:${PORT_PARA_BOB_WS}
+      # - ${PORT_PARA_BOB_LIBP2P}:${PORT_PARA_BOB_LIBP2P}
+    expose:
+      - ${PORT_PARA_BOB_LIBP2P}
+      - ${PORT_RELAY_ALICE_LIBP2P}
+    depends_on:
+      - relay-node-alice
+      - relay-node-bob
+      - relay-node-charlie
+
+  register-parachain:
+    build: scripts/registerParachain
+    environment:
+      RELAY_WS_ENDPOINT: ws://relay-node-alice:${PORT_RELAY_ALICE_WS}
+      PARA_ID: ${PARA_ID}
+      RELAY_SUDO: ${RELAY_SUDO_KEY}
+    image: node-register-parachain
+    volumes:
+      - ./specs:/wasm
+    command: sh -c "sleep 20 && node index.js"
+    depends_on:
+      - relay-node-alice
+      - relay-node-bob
+      - relay-node-charlie
