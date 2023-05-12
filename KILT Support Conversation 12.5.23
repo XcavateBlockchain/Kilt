@@ -1,0 +1,16 @@
+There's no standard CType yet defined for real estate tokens. You are free to design a CType that fits your needs.
+Xcavate — Today at 7:45 AM
+Great thanks… once we have should we share to a library?
+Antonio (w3n:ntn_x2) | KILT — Today at 7:51 AM
+We have a CType index that we are trying to maintain with all created CTypes on Spiritnet: https://github.com/KILTprotocol/ctype-index
+If you do create a new CType, please open a PR against the repo to update the index 😊
+GitHub
+GitHub - KILTprotocol/ctype-index: index of all ctypes registered o...
+index of all ctypes registered on the spiritnet. Contribute to KILTprotocol/ctype-index development by creating an account on GitHub.
+GitHub - KILTprotocol/ctype-index: index of all ctypes registered o...
+Xcavate — Today at 7:56 AM
+That’s great - thanks Antonio
+one other thing… if we create a real estate property DID (which is controlled by the real estate developer initially… can control then be transferred to multiple other DIDs? (As we are fractionalising the property through NFTs)
+I suppose we could issue a credential “property owner” the same as if the property was a company with one or more owners / directors. Do you think that would work?
+Antonio (w3n:ntn_x2) | KILT — Today at 8:20 AM
+Yes right now DIDs can only be controlled by a single key, be it sr25519, ed25519, or ecdsa. Hence multi-tenant support right now can only be supported by building an additional layer on top of them, with credentials, as you correctly pointed out.
