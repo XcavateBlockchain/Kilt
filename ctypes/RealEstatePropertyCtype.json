@@ -1,19 +1,30 @@
 {
   "$schema": "http://kilt-protocol.org/draft-01/ctype#",
   "properties": {
-    "address": { "type": "string" },
-    "associationMembershipNumbertyPrice": { "type": "string" },
-    "associationWebsite": { "type": "string" },
-    "companyDescription": { "type": "string" },
-    "companyEmailct": { "type": "string" },
-    "companyName": { "type": "string" },
-    "companyRegNumber": { "type": "string" },
-    "companyTelephone": { "type": "string" },
-    "idDoc1": { "type": "string" },
-    "idDoc2": { "type": "string" },
-    "primaryContact": { "type": "string" }
+    "constructionDate": { "type": "string" },
+    "description": { "type": "string" },
+    "estimatedRentalIncome": { "type": "string" },
+    "finishQuality": { "type": "string" },
+    "googleMapCode": { "type": "string" },
+    "internalArea": { "type": "string" },
+    "localAuthority": { "type": "string" },
+    "location": { "type": "string" },
+    "numberOfBathrooms": { "type": "number" },
+    "numberOfBedrooms": { "type": "number" },
+    "offStreetParking": { "type": "string" },
+    "outdoorSpace": { "type": "string" },
+    "planningPermissionCode": { "type": "string" },
+    "postZipCode": { "type": "string" },
+    "propertyAddressStreet": { "type": "string" },
+    "propertyAddressTownCity": { "type": "string" },
+    "propertyDevelopmentCode": { "type": "string" },
+    "propertyName": { "type": "string" },
+    "propertyNumber": { "type": "string" },
+    "propertyPrice": { "type": "string" },
+    "propertyType": { "type": "string" },
+    "titleDeedNumber": { "type": "string" }
   },
   "title": "Real Estate Property",
   "type": "object",
-  "$id": "kilt:ctype:0xc2e6cf6f42066e8277112d7cd0d71ddd8445df6aaf259ec0091eb35be946b30e"
+  "$id": "kilt:ctype:0x80a93398870fa5fca44845c9d4509baa5d844570d19b16e509bbc289695e2356"
 }

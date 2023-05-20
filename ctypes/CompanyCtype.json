@@ -5,9 +5,9 @@
     "associationMembershipNumbertyPrice": { "type": "string" },
     "associationWebsite": { "type": "string" },
     "companyDescription": { "type": "string" },
-    "companyEmailct": { "type": "string" },
+    "companyEmail": { "type": "string" },
     "companyName": { "type": "string" },
-    "companyRegNumber": { "type": "string" },
+    "companyRegNumber": { "type": "number" },
     "companyTelephone": { "type": "string" },
     "idDoc1": { "type": "string" },
     "idDoc2": { "type": "string" },
@@ -15,5 +15,5 @@
   },
   "title": "Company",
   "type": "object",
-  "$id": "kilt:ctype:0x3f7deab2c795d89040b2f365396a000c036dbda93bc0b9f8506df35e202f1678"
+  "$id": "kilt:ctype:0xef0cbf2d056b915da54795afad55cbd87495aa691759492f9a415b61b40a7124"
 }

@@ -2,19 +2,15 @@
   "$schema": "http://kilt-protocol.org/draft-01/ctype#",
   "properties": {
     "address": { "type": "string" },
-    "authorityCouncil": { "type": "string" },
     "background": { "type": "string" },
-    "development": { "type": "string" },
     "email": { "type": "string" },
     "idDoc1": { "type": "string" },
     "idDoc2": { "type": "string" },
     "name": { "type": "string" },
     "passport": { "type": "string" },
-    "phoneNumber": { "type": "string" },
-    "planningPermissionNumber": { "type": "string" },
-    "titleDeedNumber": { "type": "string" }
+    "telephone": { "type": "string" }
   },
-  "title": "Real Estate Developer",
+  "title": "PersonalDID",
   "type": "object",
-  "$id": "kilt:ctype:0x328fd8f720ed3113bac13e036f6efda18dbf8f6b57d7eb1b8cd3f8cb9c5b42f7"
+  "$id": "kilt:ctype:0x655c8241ec10314f2f9d7e8f1d6dc29e2a07459da609350d66a6dd74fc369dab"
 }
