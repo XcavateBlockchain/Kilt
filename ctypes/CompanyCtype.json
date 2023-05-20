@@ -1,0 +1,19 @@
+{
+  "$schema": "http://kilt-protocol.org/draft-01/ctype#",
+  "properties": {
+    "address": { "type": "string" },
+    "associationMembershipNumbertyPrice": { "type": "string" },
+    "associationWebsite": { "type": "string" },
+    "companyDescription": { "type": "string" },
+    "companyEmailct": { "type": "string" },
+    "companyName": { "type": "string" },
+    "companyRegNumber": { "type": "string" },
+    "companyTelephone": { "type": "string" },
+    "idDoc1": { "type": "string" },
+    "idDoc2": { "type": "string" },
+    "primaryContact": { "type": "string" }
+  },
+  "title": "Company",
+  "type": "object",
+  "$id": "kilt:ctype:0x3f7deab2c795d89040b2f365396a000c036dbda93bc0b9f8506df35e202f1678"
+}
