@@ -1,0 +1,16 @@
+{
+  "$schema": "http://kilt-protocol.org/draft-01/ctype#",
+  "properties": {
+    "address": { "type": "string" },
+    "email": { "type": "string" },
+    "idDoc1": { "type": "string" },
+    "idDoc2": { "type": "string" },
+    "name": { "type": "string" },
+    "passport": { "type": "string" },
+    "profession": { "type": "string" },
+    "telephone": { "type": "string" }
+  },
+  "title": "PersonalDID",
+  "type": "object",
+  "$id": "kilt:ctype:0x5ad9e129d192a69bf483c7a58905a6fdada80962be66a4e90d0081f191c5bf1b"
+}

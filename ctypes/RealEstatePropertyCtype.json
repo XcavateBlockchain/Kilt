@@ -1,0 +1,30 @@
+{
+  "$schema": "http://kilt-protocol.org/draft-01/ctype#",
+  "properties": {
+    "constructionDate": { "type": "string" },
+    "description": { "type": "string" },
+    "estimatedRentalIncome": { "type": "string" },
+    "finishQuality": { "type": "string" },
+    "googleMapCode": { "type": "string" },
+    "internalArea": { "type": "string" },
+    "localAuthority": { "type": "string" },
+    "location": { "type": "string" },
+    "numberOfBathrooms": { "type": "number" },
+    "numberOfBedrooms": { "type": "number" },
+    "offStreetParking": { "type": "string" },
+    "outdoorSpace": { "type": "string" },
+    "planningPermissionCode": { "type": "string" },
+    "postZipCode": { "type": "string" },
+    "propertyAddressStreet": { "type": "string" },
+    "propertyAddressTownCity": { "type": "string" },
+    "propertyDevelopmentCode": { "type": "string" },
+    "propertyName": { "type": "string" },
+    "propertyNumber": { "type": "string" },
+    "propertyPrice": { "type": "string" },
+    "propertyType": { "type": "string" },
+    "titleDeedNumber": { "type": "string" }
+  },
+  "title": "Real Estate Property",
+  "type": "object",
+  "$id": "kilt:ctype:0x80a93398870fa5fca44845c9d4509baa5d844570d19b16e509bbc289695e2356"
+}
